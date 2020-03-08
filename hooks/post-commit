@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo
+if [ -e .commit ]; then
+	rm .commit
+	rm x86_64/afusco.{db,files}
+	
+	cp x86_64/afusco.db.tar.xz x86_64/afusco.db
+	cp x86_64/afusco.files.tar.xz x86_64/afusco.files
+
+	git add x86_64/afusco.{db,files}
+	git commit --amend -C HEAD --no-verify
+fi
